@@ -35,7 +35,7 @@ function getComputerChoice() {
     }
 
 } */
-
+//addEventListener
 function getHumanChoice() {
     var userChoice = prompt("What is you choice?");
 
