@@ -1,10 +1,7 @@
-
-let choice;
-let userChoice;
 let validChoices =  ["Rock", "Paper", "Scissor"];
 
 function getComputerChoice() {
-
+    let choice;
     let randomizer = Math.random();
     if ( randomizer <= 0.3) {
         choice = "Paper";
@@ -17,44 +14,20 @@ function getComputerChoice() {
     return choice;
 }
 
-/* function getHumanChoice() {
-    let userAnswer = prompt("What is you choice?");
 
-  if ( userAnswer == validChoices[0] ){
-        userChoice = userAnswer;
-       return userChoice;
- } else if ( userAnswer == validChoices[1] ){
-    userChoice = userAnswer;
-    return userChoice;
- }  else if ( userAnswer == validChoices[2] ){
-    userChoice = userAnswer;
-    return userChoice;
- } else {
-       userChoice = "Erro"
-        return userChoice;
-    }
-
-} */
-//addEventListener
 function getHumanChoice() {
-    var userChoice = prompt("What is you choice?");
+    let userChoice = prompt("What is you choice?");
 
-    if ( userChoice == validChoices[0] ){
-        return userChoice;
-    } else if ( userChoice == validChoices[1] ){
-        return userChoice;
-    }  else if ( userChoice == validChoices[2] ){
+    if ( (userChoice == "Rock") || (userChoice == "Paper") || (userChoice == "Scissor")){
         return userChoice;
     } else {
-        userChoice = "Erro";
-        return userChoice;
+        userError = "Error";
+        return userError;
         }
 
 }
 
 
-getComputerChoice();
-getHumanChoice();
 
-console.log(choice)
-console.log(userChoice)
+console.log(getComputerChoice())
+console.log(getHumanChoice())
