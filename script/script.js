@@ -18,9 +18,10 @@ function getComputerChoice() {
 
 
 function getHumanChoice() {
-    let userChoice = prompt("What is you choice?");
+    let userPrompt = prompt("What is you choice?");
+    let userChoice = userPrompt.charAt(0).toUpperCase() + userPrompt.slice(1).toLowerCase();
 
-    if ( (userChoice == "Rock") || (userChoice == "Paper") || (userChoice == "Scissor")){
+        if ( (userChoice == "Rock") || (userChoice == "Paper") || (userChoice == "Scissor")){
         return userChoice;
     } else {
         userError = "Error";
@@ -29,22 +30,43 @@ function getHumanChoice() {
 
 }
 
-function winCondition() {
-    if ((userChoice == "Rock" && choice == "Paper") || (userChoice == "Paper" && choice == "Scissor") || (userChoice == "Scissor" && choice == "Rock")){
+function winCondition(human, computer) {
+    if ((human == "Rock" && computer == "Paper") || (human == "Paper" && computer == "Scissor") || (human == "Scissor" && computer == "Rock")){
+        computerScore++;
         return ("Computer wins");
-    } else if ( (userChoice == "Paper" && choice == "Rock") || ( userChoice == "Rock" && choice == "Scissor") || ( userChoice == "Scissor" && choice == "Paper") ) {
+    } else if ( (human == "Paper" && computer == "Rock") || ( human == "Rock" && computer == "Scissor") || ( human == "Scissor" && computer == "Paper") ) {
+        humanScore++;
        return ("Player wins");
     } else {
         return ("Draw");
     }
 }
 
-choice = getComputerChoice();
-userChoice = getHumanChoice();
 
-let result = winCondition();
+function playGame(rounds) {
+    for ( i = 0; i <= rounds; i++){
+        console.log("Round " + i);
 
-console.log("Computer: " + choice);
-console.log("Human: " + userChoice);
-console.log(result);
+        choice = getComputerChoice();
+        userChoice = getHumanChoice();
 
+        let result = winCondition(userChoice, choice);
+
+        console.log("Computer: " + choice);
+        console.log("Human: " + userChoice);
+        console.log(result);
+        console.log("Points: " + "Computer: " + computerScore + ", Human: " + humanScore);
+    }
+}
+
+// Plays the game for five rounds
+playGame(5);
+
+// Final result message
+if ( computerScore > humanScore) {
+    console.log("Game over! You lose!")
+} else if ( computerScore == humanScore) {
+    console.log("Draw! Play again!")
+} else {
+    console.log("Victory! You won!")
+}
