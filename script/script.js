@@ -1,7 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
-let userChoice;
-let choice;
+let userChoice, choice;
 
 function getComputerChoice() {
     let choice;
@@ -30,19 +29,22 @@ function getHumanChoice() {
 
 }
 
+function winCondition() {
+    if ((userChoice == "Rock" && choice == "Paper") || (userChoice == "Paper" && choice == "Scissor") || (userChoice == "Scissor" && choice == "Rock")){
+        return ("Computer wins");
+    } else if ( (userChoice == "Paper" && choice == "Rock") || ( userChoice == "Rock" && choice == "Scissor") || ( userChoice == "Scissor" && choice == "Paper") ) {
+       return ("Player wins");
+    } else {
+        return ("Draw");
+    }
+}
+
 choice = getComputerChoice();
 userChoice = getHumanChoice();
 
-console.log(choice);
-console.log(userChoice);
-console.log();
+let result = winCondition();
 
-function winCondition() {
-    if ((userChoice == "Rock" && choice == "Paper") || (userChoice == "Paper" && choice == "Scissor") || (userChoice == "Scissor" && choice == "Rock")){
-        console.log("Computer wins");
-    } else if ( (userChoice == "Paper" && choice == "Rock") || ( userChoice == "Rock" && choice == "Scissor") || ( userChoice == "Scissor" && choice == "Paper") ) {
-       console.log("Player wins");
-    } else {
-        console.log("Draw");
-    }
-}
+console.log("Computer: " + choice);
+console.log("Human: " + userChoice);
+console.log(result);
+
